@@ -102,6 +102,14 @@ LOCAL_CFLAGS += -Wno-multichar \
     -DUSE_STAGEFRIGHT_READERS \
     -DUSE_STAGEFRIGHT_3GPP_READER
 
+ifeq ($(OMAP_ENHANCEMENT), true)
+ifeq ($(ENHANCED_DOMX), true)
+LOCAL_C_INCLUDES += $(TOP)/hardware/ti/domx/omx_core/inc
+else
+LOCAL_C_INCLUDES += $(TOP)/hardware/ti/omap4xxx/domx/omx_core/inc
+endif
+endif
+
 include $(BUILD_SHARED_LIBRARY)
 
 #include $(call all-makefiles-under,$(LOCAL_PATH))
